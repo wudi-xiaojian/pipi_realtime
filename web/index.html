@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>皮皮猴实时语音 Agent</title>
+
+    <link
+        rel="stylesheet"
+        href="/web/style.css"
+    >
+</head>
+
+<body>
+
+<div class="app">
+
+    <header class="header">
+
+        <div class="logo">
+            🐵
+        </div>
+
+        <div>
+            <h1>皮皮猴</h1>
+
+            <p>
+                实时语音伙伴
+            </p>
+        </div>
+
+    </header>
+
+
+    <main class="main">
+
+        <!-- ================================================= -->
+        <!-- Status -->
+        <!-- ================================================= -->
+
+        <section class="status-card">
+
+            <div
+                id="status-dot"
+                class="status-dot"
+            ></div>
+
+            <span id="status-text">
+                等待开始
+            </span>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- Conversation -->
+        <!-- ================================================= -->
+
+        <section
+            id="conversation"
+            class="conversation"
+        >
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🎤
+                </div>
+
+                <p>
+                    点击下面的按钮，开始和皮皮猴说话吧！
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- Controls -->
+        <!-- ================================================= -->
+
+        <section class="controls">
+
+            <button
+                id="start-button"
+                class="start-button"
+            >
+                🎤 开始对话
+            </button>
+
+            <button
+                id="stop-button"
+                class="stop-button hidden"
+            >
+                ⏹ 结束对话
+            </button>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- Debug -->
+        <!-- ================================================= -->
+
+        <section class="debug-panel">
+
+            <div class="debug-title">
+                连接状态
+            </div>
+
+            <div id="connection-info">
+                尚未连接
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="/web/app.js"></script>
+
+</body>
+</html>
