@@ -1,5 +1,6 @@
 import os
 from dataclasses import dataclass
+from typing import Optional
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -209,6 +210,33 @@ class Settings:
             "不要使用复杂的专业词汇。"
             "回答当前问题后，可以自然地继续和孩子互动。"
         ),
+    )
+
+    # ========================================================
+    # Teaching / Knowledge Base
+    # ========================================================
+
+    knowledge_dir: str = os.getenv(
+        "KNOWLEDGE_DIR",
+        str(PROJECT_ROOT / "knowledge"),
+    ).strip()
+
+    default_activity_id: str = os.getenv(
+        "DEFAULT_ACTIVITY_ID",
+        "stacking_cups",
+    ).strip()
+
+    default_activity_step: Optional[int] = (
+        int(os.getenv("DEFAULT_ACTIVITY_STEP", "1"))
+        if os.getenv("DEFAULT_ACTIVITY_STEP", "1").strip()
+        else None
+    )
+
+    knowledge_top_k: int = int(
+        os.getenv(
+            "KNOWLEDGE_TOP_K",
+            "5",
+        )
     )
 
     # ========================================================

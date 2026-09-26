@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/pipi-realtime.iml" filepath="$PROJECT_DIR$/.idea/pipi-realtime.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/pipi_realtime_teaching_agent_v1/.idea/pipi_realtime_teaching_agent_v1.iml" filepath="$USER_HOME$/Downloads/pipi_realtime_teaching_agent_v1/.idea/pipi_realtime_teaching_agent_v1.iml" />
     </modules>
   </component>
 </project>

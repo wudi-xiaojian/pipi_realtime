@@ -1,6 +1,6 @@
 import base64
 import json
-from typing import Any, AsyncIterator, Dict, Optional
+from typing import Any, AsyncIterator, Dict, List, Optional
 
 import websockets
 
@@ -28,6 +28,7 @@ class QwenRealtimeClient:
         vad_silence_duration_ms: int,
         max_history_turns: int,
         debug: bool = False,
+        tools: Optional[List[Dict[str, Any]]] = None,
     ):
         self.api_key = api_key
         self.websocket_url = websocket_url
@@ -45,6 +46,7 @@ class QwenRealtimeClient:
         self.max_history_turns = max_history_turns
 
         self.debug = debug
+        self.tools = tools or []
 
         self.websocket = None
         self.connected = False
@@ -123,6 +125,7 @@ class QwenRealtimeClient:
                 "max_history_turns": (
                     self.max_history_turns
                 ),
+                "tools": self.tools,
                 "turn_detection": {
                     "type": self.vad_type,
                     "threshold": self.vad_threshold,
@@ -263,6 +266,40 @@ class QwenRealtimeClient:
                 )
 
             raise
+
+    # ============================================================
+    # Function calling
+    # ============================================================
+
+    async def send_function_call_output(
+        self,
+        call_id: str,
+        output: str,
+    ) -> None:
+        """Write a local tool result into the Qwen conversation."""
+
+        await self.send_event(
+            {
+                "type": "conversation.item.create",
+                "item": {
+                    "type": "function_call_output",
+                    "call_id": call_id,
+                    "output": output,
+                },
+            }
+        )
+
+    async def create_response(self) -> None:
+        """Trigger the follow-up inference after a tool result."""
+
+        await self.send_event(
+            {
+                "type": "response.create",
+                "response": {
+                    "modalities": ["audio", "text"],
+                },
+            }
+        )
 
     # ============================================================
     # Cancel response
