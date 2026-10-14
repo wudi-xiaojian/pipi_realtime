@@ -654,7 +654,7 @@ async function startMicrophone() {
                 {
                     audio: {
                         channelCount: 1,
-                        echoCancellation: true,
+                        echoCancellation: false,
                         noiseSuppression: true,
                         autoGainControl: true,
                     },

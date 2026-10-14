@@ -97,9 +97,7 @@ async def websocket_endpoint(
         "[WebSocket] Browser connected"
     )
 
-    session = RealtimeSession(
-        websocket
-    )
+    session = RealtimeSession(websocket)
 
     try:
 

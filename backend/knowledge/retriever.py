@@ -79,7 +79,7 @@ class KnowledgeRetriever:
 
                 # If the caller already knows the current step, give it a
                 # small deterministic boost rather than replacing retrieval.
-                if current_step is not None and step.id == current_step:
+                if score > 0 and current_step is not None and step.id == current_step:
                     score += 3
 
                 if score > 0:
