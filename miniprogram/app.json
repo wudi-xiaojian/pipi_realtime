@@ -1,0 +1,14 @@
+{
+  "pages": ["pages/index/index"],
+  "window": {
+    "navigationBarTitleText": "皮皮猴",
+    "navigationBarBackgroundColor": "#fff8ef",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fff8ef"
+  },
+  "permission": {
+    "scope.record": { "desc": "用于和皮皮猴进行实时语音对话" }
+  },
+  "requiredPrivateInfos": [],
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,23 @@
+<view class="app">
+  <view class="header">
+    <view class="logo">🐵</view>
+    <view><view class="title">皮皮猴</view><view class="subtitle">实时语音伙伴</view></view>
+  </view>
+  <view class="status-card"><view class="status-dot {{status}}"></view><text>{{statusText}}</text></view>
+  <scroll-view class="conversation" scroll-y scroll-into-view="{{scrollTarget}}" scroll-with-animation>
+    <view wx:if="{{!messages.length}}" class="empty-state">
+      <view class="empty-icon">🎤</view><text>点击下面的按钮，开始和皮皮猴说话吧！</text>
+    </view>
+    <view wx:for="{{messages}}" wx:key="id" id="{{item.id}}" class="message {{item.role}}">
+      <view class="message-label">{{item.role === 'user' ? '小朋友' : '皮皮猴'}}</view>
+      <view class="message-content">{{item.text}}</view>
+    </view>
+    <view id="conversation-end"></view>
+  </scroll-view>
+  <view class="controls">
+    <button wx:if="{{!running && !connecting}}" class="start-button" disabled="{{stopping}}" bindtap="startConversation">{{stopping ? '正在停止…' : '🎤 开始对话'}}</button>
+    <button wx:else class="stop-button" bindtap="stopConversation">{{connecting ? '取消连接' : '⏹ 结束对话'}}</button>
+  </view>
+  <view class="connection-card"><view class="connection-title">连接状态</view><text>{{connectionInfo}}</text></view>
+  <button class="settings-button" bindtap="openSettings">麦克风权限设置</button>
+</view>
